@@ -33,7 +33,7 @@ class ContactRepository {
 
   findByEmail(email) {
     return new Promise(((resolve) => {
-      const result = contacts.some((contact) => contact.email === email);
+      const result = contacts.find((contact) => contact.email === email);
       resolve(result);
     }));
   }
@@ -59,6 +59,24 @@ class ContactRepository {
 
       contacts.push(createdContact);
       resolve(createdContact);
+    });
+  }
+
+  update(id, {
+    name, email, phone, category_id,
+  }) {
+    return new Promise((resolve) => {
+      const updatedContact = {
+        id,
+        name,
+        email,
+        phone,
+        category_id,
+      };
+
+      contacts = contacts.map((contact) => (contact.id === id ? updatedContact : contact));
+
+      resolve(updatedContact);
     });
   }
 }
