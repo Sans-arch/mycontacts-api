@@ -19,6 +19,11 @@ class CategoryRepository {
     `, [name]);
     return row;
   }
+
+  async delete(id) {
+    const deleteOp = await db.query('DELETE FROM categories WHERE id = $1', [id]);
+    return deleteOp;
+  }
 }
 
 module.exports = new CategoryRepository();
