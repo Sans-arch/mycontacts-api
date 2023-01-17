@@ -3,4 +3,4 @@
 Tecnologias utilizadas neste projeto:
 - NodeJS
 - ExpressJS
-- Postgres
+- Postgres (rodando em um container Docker)
